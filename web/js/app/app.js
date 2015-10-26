@@ -1,27 +1,94 @@
 //Define an angular module for our app
 
-var flowmlApp = angular.module('bulletinApp', ['ngRoute']);
+(function (angular) {
+    'use strict';
+    angular.module('ngRouteExample', ['ngRoute'])
+            .controller('MainController', function ($scope, $route, $routeParams, $location) {
+                $scope.$route = $route;
+                $scope.$location = $location;
+                $scope.$routeParams = $routeParams;
+            })
+            .controller('BookController', function ($scope, $routeParams) {
+                $scope.name = "BookController";
+                $scope.params = $routeParams;
+            })
+            .controller('ChapterController', function ($scope, $routeParams) {
+                $scope.name = "ChapterController";
+                $scope.params = $routeParams;
+            })
+            .controller('homeController', function ($scope, $routeParams) {
+                var vm = this;
+                vm.message = 'Welcome to the home page!';
+                $scope.name = "homeController";
+                $scope.params = $routeParams;
+            })
+            .controller('saleController', function ($scope, $routeParams) {
+                var vm = this;
+                vm.message = 'This is the sale page!';
+                $scope.name = "saleController";
+                $scope.params = $routeParams;
+            })
+            .controller('servicesController', function ($scope, $routeParams) {
+                $scope.message = 'Look! I am an about page.';
+                $scope.name = "servicesController";
+                $scope.params = $routeParams;
+            })
+            .controller('aboutController', function ($scope, $routeParams) {
+                $scope.message = 'Look! I am an about page.';
+                $scope.name = "aboutController";
+                $scope.params = $routeParams;
+            })
+            .controller('contactController', function ($scope, $routeParams) {
+                $scope.message = 'Look! I am an about page.';
+                $scope.name = "contactController";
+                $scope.params = $routeParams;
+            })
+            .config(function ($routeProvider, $locationProvider) {
+                $routeProvider
+                        .when('/Book/:bookId', {
+                            templateUrl: 'book.html',
+                            controller: 'BookController',
+                            resolve: {
+                                // I will cause a 1 second delay
+                                delay: function ($q, $timeout) {
+                                    var delay = $q.defer();
+                                    $timeout(delay.resolve, 1000);
+                                    return delay.promise;
+                                }
+                            }
+                        })
+                        .when('/Book/:bookId/ch/:chapterId', {
+                            templateUrl: 'chapter.html',
+                            controller: 'ChapterController'
+                        })
 
-flowmlApp.config(['$routeProvider',
-    function ($routeProvider) {
-        $routeProvider
-
-                .when('/', {
-                    templateUrl: 'pages/home.html',
-                    controller: 'mainController'
-                })
-
-                .when('/sale', {
-                    templateUrl: 'pages/sale.html',
-                    controller: 'saleController'
-                })
-    }])
-
-    scotchApp.controller('mainController', function($scope) {
-        // create a message to display in our view
-        $scope.message = 'Everyone come and see how good I look!';
-    });
-
-    scotchApp.controller('saleController', function($scope) {
-        $scope.message = 'Look! I am an about page.';
-    });
+                        .when('/home', {
+                            templateUrl: 'views/pages/home.html',
+                            controller: 'homeController',
+                            controllerAs: 'home'
+                        })
+                        .when('/', {
+                            templateUrl: 'home.html',
+                            controller: 'mainController'
+                        })
+                        .when('/sale', {
+                            templateUrl: 'pages/sale.html',
+                            controller: 'saleController',
+                            controllerAs: 'sale'
+                        })
+                        .when('/services', {
+                            templateUrl: 'pages/services.html',
+                            controller: 'servicesController'
+                        })
+                        .when('/about', {
+                            templateUrl: 'pages/about.html',
+                            controller: 'aboutController'
+                        })
+                        .when('/contact', {
+                            templateUrl: 'pages/contact.html',
+                            controller: 'contactController'
+                        });
+                // configure html5 to get links working on jsfiddle
+                $locationProvider.html5Mode({enabled:true});
+            });
+})(window.angular);
