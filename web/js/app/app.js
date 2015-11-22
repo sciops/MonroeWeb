@@ -8,14 +8,6 @@
                 $scope.$location = $location;
                 $scope.$routeParams = $routeParams;
             })
-            .controller('BookController', function ($scope, $routeParams) {
-                $scope.name = "BookController";
-                $scope.params = $routeParams;
-            })
-            .controller('ChapterController', function ($scope, $routeParams) {
-                $scope.name = "ChapterController";
-                $scope.params = $routeParams;
-            })
             .controller('homeController', function ($scope, $routeParams) {
                 var vm = this;
                 vm.message = 'Welcome to the home page!';
@@ -45,23 +37,6 @@
             })
             .config(function ($routeProvider, $locationProvider) {
                 $routeProvider
-                        .when('/Book/:bookId', {
-                            templateUrl: 'book.html',
-                            controller: 'BookController',
-                            resolve: {
-                                // I will cause a 1 second delay
-                                delay: function ($q, $timeout) {
-                                    var delay = $q.defer();
-                                    $timeout(delay.resolve, 1000);
-                                    return delay.promise;
-                                }
-                            }
-                        })
-                        .when('/Book/:bookId/ch/:chapterId', {
-                            templateUrl: 'chapter.html',
-                            controller: 'ChapterController'
-                        })
-
                         .when('/home', {
                             templateUrl: 'views/pages/home.html',
                             controller: 'homeController',
@@ -97,15 +72,11 @@
             });
 })(window.angular);
 
-var thumbsUp = element(by.css('span.glyphicon-thumbs-up'));
-var thumbsDown = element(by.css('span.glyphicon-thumbs-down'));
+/*
+ var app = angular.module('denomradioapp', []);
+ app.controller('denomradioctrl', function($scope) {
+ $scope.denomradio = "yes";
+ });
+ */
 
-it('should check ng-show / ng-hide', function() {
-  expect(thumbsUp.isDisplayed()).toBeFalsy();
-  expect(thumbsDown.isDisplayed()).toBeTruthy();
 
-  element(by.model('denomradio')).click();
-
-  expect(thumbsUp.isDisplayed()).toBeTruthy();
-  expect(thumbsDown.isDisplayed()).toBeFalsy();
-});
