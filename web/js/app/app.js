@@ -87,6 +87,10 @@
                         .when('/contact', {
                             templateUrl: 'pages/contact.html',
                             controller: 'contactController'
+                        })
+                        .when('/input', {
+                            templateUrl: 'pages/input.html',
+                            controller: 'inputController'
                         });
                 // configure html5 to get links working on jsfiddle
                 $locationProvider.html5Mode({enabled:true});
