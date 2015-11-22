@@ -3,12 +3,6 @@
 (function (angular) {
     'use strict';
     angular.module('ngRouteExample', ['ngRoute'])
-            .controller('inputform', function ($scope) {
-                $scope.denomradio = 'yesdenom';
-                $scope.isShown = function (denomradio) {
-                    return denomradio === $scope.denomradio;
-                };
-            })
             .controller('MainController', function ($scope, $route, $routeParams, $location) {
                 $scope.$route = $route;
                 $scope.$location = $location;
@@ -85,16 +79,16 @@
  });
  */
 
-/*
- // http://stackoverflow.com/q/21400456/949476
- // http://plnkr.co/edit/yU6Oj36u9xSJdLwKJLTZ?p=preview
- var drapp = angular.module('plunker', []);
- drapp.controller('Ctrl', function($scope) {
- $scope.color = 'blue';
- $scope.isShown = function(color) {
- return color === $scope.color;
- };
- });*/
+
+// http://stackoverflow.com/q/21400456/949476
+// http://plnkr.co/edit/yU6Oj36u9xSJdLwKJLTZ?p=preview
+var drapp = angular.module('inputapp', []);
+drapp.controller('inputform', function ($scope) {
+    $scope.denomradio = 'yesdenom';
+    $scope.isShown = function (denomradio) {
+        return denomradio === $scope.denomradio;
+    };
+});
 
 
 
