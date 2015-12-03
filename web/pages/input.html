@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+
+<!-- Page Content --> 
+
+
+<!-- reference http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/ -->
+<div ng-controller="inputController">
+    <form ng-submit="submit()">
+        <label for="serial" class="col-sm-2 control-label">Box serial number</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="boxkey.serial" class="form-control" id="serial" placeholder="Serial Number here"/>
+        </div>
+        <label for="opnum" class="col-sm-2 control-label">Operator serial number</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="boxkey.opnum" class="form-control" id="opnum" placeholder="Operator Number goes here"/>
+        </div>
+        <label for="datetime" class="col-sm-2 control-label">Date and Time</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="boxkey.datetime" class="form-control" id="datetime" placeholder="Unix date number goes here"/>
+        </div>
+        <label for="currtype" class="col-sm-2 control-label">Currency type</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="boxkey.currtype" class="form-control" id="currtype" placeholder="Currency type used goes here"/>
+        </div>
+        <label for="denomradio" class="col-sm-2 control-label">Does your currency have denominations?</label>
+        <div class="col-sm-10">
+            <input type="radio" class="form-control" name="denomradio" ng-model="denomradio" value="yesdenom" id="yesdenom">Yes
+            <br>
+            <input type="radio" class="form-control" name="denomradio" ng-model="denomradio" value="nodenom" id="nodenom">No
+            <br>
+            <input type="radio" class="form-control" name="denomradio" ng-model="denomradio" value="maybedenom" id="maybedenom">I don't know
+            <br>
+        </div>
+        <br><br><br>
+        <div ng-show="isShown('yesdenom')">
+            <label for="denom" class="col-sm-2 control-label">Denomination</label>
+            <div class="col-sm-4">
+                <input type="checkbox" ng-model="boxkey.denomone" class="form-control" id="denomone" name="denomone" value="1"> 1
+                <br>
+                <input type="checkbox" ng-model="boxkey.denomtwo" class="form-control" id="denomtwo" name="denomtwo" value="2"> 2
+                <br>
+                <input type="checkbox" ng-model="boxkey.denomfive" class="form-control" id="denomfive" name="denomfive" value="5"> 5
+                <br>
+                <input type="checkbox" ng-model="boxkey.denomten" class="form-control" id="denomten" name="denomten" value="10"> 10
+                <br>
+                <input type="checkbox" ng-model="boxkey.denomtwenty" class="form-control" id="denomtwenty" name="denomtwenty" value="20"> 20
+                <br>
+                <input type="checkbox" ng-model="boxkey.denomfifty" class="form-control" id="denomfifty" name="denomfifty" value="50"> 50
+                <br>
+                <input type="checkbox" ng-model="boxkey.denomhundred" class="form-control" id="denomhundred" name="denomhundred" value="100"> 100
+                <br>
+            </div>
+        </div>
+        <div ng-show="isShown('nodenom')">
+            <label for="denom" class="col-sm-2 control-label">Denomination</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="boxkey.denom" class="form-control" id="denom" placeholder="Currency denomination goes here"/>
+            </div>
+        </div>
+        <div ng-show="isShown('maybedenom')">
+            <center><p>Well, I hope you figure it out!</p></center>
+        </div>
+        <br><br><br>
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" class="btn btn-primary" value="Submit"/>
+        </div>
+
+        serial: {{boxkey.serial}}
+        <br>
+        opnum: {{boxkey.opnum}}
+        <br>
+        datetime: {{boxkey.datetime}}
+        <br>
+        currtype: {{boxkey.currtype}}
+        <br>
+        denom: {{boxkey.denom}}
+        <br>
+        JSON: {{boxkey}}
+        <br>
+        Submission message: {{message}}
+
+    </form>
+</div>
