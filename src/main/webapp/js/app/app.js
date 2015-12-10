@@ -1,4 +1,6 @@
 //Define an angular module for our app
+'use strict';
+var App = angular.module('myApp',[]);
 
 (function (angular) {
     'use strict';
