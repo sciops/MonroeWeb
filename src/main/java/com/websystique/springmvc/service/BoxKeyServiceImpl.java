@@ -73,14 +73,14 @@ public class BoxKeyServiceImpl implements BoxKeyService {
     }
 
     private static List<BoxKey> populateDummyBoxKeys() {
-        List<BoxKey> users = new ArrayList<BoxKey>();
+        List<BoxKey> keys = new ArrayList<BoxKey>();
         keys.add(new BoxKey(counter.incrementAndGet(), "HWzj4eCP", "kg3Wr5cN", "1449864824", "US Dollars", null,
                 true, false, false, false, false, false, false));
         keys.add(new BoxKey(counter.incrementAndGet(), "S7AyQck9", "SLDwGajJ", "1449868424", "Mexican Pesos", null,
                 false, false, true, false, false, false, false));
         keys.add(new BoxKey(counter.incrementAndGet(), "tZ4UX9Ak", "s5Q5DBJQ", "1449951224", "British Pounds", "quid",
                 false, false, false, false, false, false, false));
-        return users;
+        return keys;
     }
 
 }
