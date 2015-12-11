@@ -53,12 +53,12 @@ var App = angular.module('myApp',[]);
             .config(function ($routeProvider, $locationProvider) {
                 $routeProvider
                         .when('/home', {
-                            templateUrl: 'views/pages/home.html',
+                            templateUrl: 'home.html',
                             controller: 'homeController',
                             controllerAs: 'home'
                         })
                         .when('/', {
-                            templateUrl: 'index.html',
+                            templateUrl: 'pages/services.html',
                             controller: 'mainController'
                         })
                         .when('/sale', {
