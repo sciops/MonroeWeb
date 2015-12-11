@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class IndexController {
 
-	  @RequestMapping(method = RequestMethod.GET)
-	    public String getIndexPage() {
-	        return "UserManagement";
-	    }
+    //this returns the UserManagement.jsp page from WEB-INF/views
+    @RequestMapping(method = RequestMethod.GET)
+    public String getIndexPage() {
+        return "UserManagement";
+    }
 
 }
