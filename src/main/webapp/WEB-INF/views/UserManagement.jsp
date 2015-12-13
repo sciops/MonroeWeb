@@ -67,9 +67,6 @@
         <script src = "js/app/app.js" ></script>
         <script src = "js/controller/controllers.js"></script>
         <script src = "js/service/service.js"></script>
-        <script src="<c:url value='js/app.js' />"></script>
-        <script src="<c:url value='js/service/user_service.js' />"></script>
-        <script src="<c:url value='js/controller/user_controller.js' />"></script>
     </head>
     <body>
         <%@include  file="/index.html" %>        
